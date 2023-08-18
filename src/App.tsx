@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./App.module.scss";
 import {observer} from "mobx-react";
 import {SearchForm} from "../src/components/SearchForm";
-import {AddInstrument} from "src/components/AddInstrument";
+import {AddInstrument} from "../src/components/AddInstrument";
 
 const App = observer(() => {
     return (
