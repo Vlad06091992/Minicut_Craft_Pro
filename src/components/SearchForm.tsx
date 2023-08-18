@@ -2,6 +2,7 @@ import {observer} from "mobx-react";
 import {SearchDataType, Store} from '../store'
 import {useState} from "react";
 import {Button} from "@mui/material";
+import {SelectWithOptions} from "../../src/components/InputWithOptions";
 
 export const SearchForm = observer(() => {
 
@@ -34,6 +35,7 @@ export const SearchForm = observer(() => {
                     setSpiral(e.currentTarget.value)
                 }}/>
                 </div>
+                <SelectWithOptions setSpiral={setSpiral}/>
 
                 <Button variant={'outlined'} onClick={(e) => {
                     let searchObject: SearchDataType = {diameter, numberOfTeeth, spiral}
