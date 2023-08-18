@@ -67,6 +67,7 @@ class DataStore {
         makeObservable(this, {
             dataArray: observable,
             findItem: action,
+            currentData:observable
 
         });
         this.getData();
@@ -82,12 +83,15 @@ class DataStore {
     findItem(data: SearchDataType) {
 
         let res = this.dataArray.find(el => {
-
             let item = (toJS(el))
+            if (compareObjects(item.searchData, data)) {
+                return el.instrumentalData
+            }
 
-            if (compareObjects(item.searchData, data)) return el.instrumentalData
         })
-        if (res) this.currentData = res.instrumentalData
+        if (res) {
+            this.currentData = res.instrumentalData
+        }
 
     }
 

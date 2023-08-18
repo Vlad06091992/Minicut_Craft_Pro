@@ -15,36 +15,36 @@ export const SearchForm = observer(() => {
                 Количество конфигураций инструментов : {Store.dataArray.length}
             </div>
 
-            <form onSubmit={(event) => {
-                event.preventDefault()
-                let searchObject: SearchDataType = {diameter, numberOfTeeth, spiral}
-                setFindRes(Store.findItem(searchObject))
-                console.log(searchObject)
-            }}>
+            <div>
                 <div>
-                    <span>Диаметр</span> <input  value={diameter} onChange={(e) => {
+                    <span>Диаметр</span> <input value={diameter} onChange={(e) => {
                     setDiametr(e.currentTarget.value)
                 }}/>
                 </div>
                 <div>
-                    <span>Количество зубьев</span> <input  value={numberOfTeeth} onChange={(e) => {
+                    <span>Количество зубьев</span> <input value={numberOfTeeth} onChange={(e) => {
                     setNumberofTeeth(e.currentTarget.value)
                 }}/>
                 </div>
                 <div>
 
-                    <span>Спираль</span> <input  value={spiral} onChange={(e) => {
+                    <span>Спираль</span> <input value={spiral} onChange={(e) => {
                     setSpiral(e.currentTarget.value)
                 }}/>
                 </div>
 
-                <button type="submit">find instrument</button>
-            </form>
+                <button onClick={(e) => {
+                    let searchObject: SearchDataType = {diameter, numberOfTeeth, spiral}
+                    Store.findItem(searchObject)
+                }}>find instrument
+                </button>
+            </div>
 
             <div>
-                {Store.currentData?.F}
-                {Store.currentData?.G}
-                {Store.currentData?.R}
+                <div> F : {Store.currentData?.F}</div>
+                <div> G : {Store.currentData?.G}</div>
+                <div> R : {Store.currentData?.R}</div>
+
             </div>
 
         </div>)
