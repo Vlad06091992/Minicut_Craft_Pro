@@ -7,9 +7,9 @@ import {AddInstrument} from "../src/components/AddInstrument";
 const App = observer(() => {
     return (
         <div className={styles.App}>
-           <h1> Minicut Craft Pro v0.04 </h1>
+           <h1> Minicut Craft Pro v0.05 </h1>
             <SearchForm/>
-            {/*<AddInstrument/>*/}
+            <AddInstrument/>
         </div>
     );
 });

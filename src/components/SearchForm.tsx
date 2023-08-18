@@ -1,16 +1,18 @@
 import {observer} from "mobx-react";
 import {SearchDataType, Store} from '../store'
 import {useState} from "react";
+import {Button} from "@mui/material";
 
 export const SearchForm = observer(() => {
 
     const [diameter, setDiametr] = useState<number | string>(0)
     const [numberOfTeeth, setNumberofTeeth] = useState<number | string>(0)
     const [spiral, setSpiral] = useState<number | string>('')
-    const [findRes, setFindRes] = useState<any>('')
+
 
     return (
         <div>
+            <h1>Поиск кругов</h1>
             <div>
                 Количество конфигураций инструментов : {Store.dataArray.length}
             </div>
@@ -33,17 +35,18 @@ export const SearchForm = observer(() => {
                 }}/>
                 </div>
 
-                <button onClick={(e) => {
+                <Button variant={'outlined'} onClick={(e) => {
                     let searchObject: SearchDataType = {diameter, numberOfTeeth, spiral}
                     Store.findItem(searchObject)
                 }}>find instrument
-                </button>
+                </Button>
             </div>
 
             <div>
                 <div> F : {Store.currentData?.F}</div>
-                <div> G : {Store.currentData?.G}</div>
                 <div> R : {Store.currentData?.R}</div>
+                <div> G : {Store.currentData?.G}</div>
+
 
             </div>
 

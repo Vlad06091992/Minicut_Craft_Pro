@@ -9,13 +9,13 @@ export type SearchDataType = {
     spiral: string | number
 }
 
-type InstrumentalDataType = {
-    F: string
-    R: string
-    G: string
+export type InstrumentalDataType = {
+    F: string | number
+    R: string | number
+    G: string | number
 }
 
-type ItemType = {
+export type ItemType = {
     searchData: SearchDataType
     instrumentalData: InstrumentalDataType
 }
@@ -67,7 +67,7 @@ class DataStore {
         makeObservable(this, {
             dataArray: observable,
             findItem: action,
-            currentData:observable
+            currentData: observable
 
         });
         this.getData();
@@ -81,22 +81,25 @@ class DataStore {
     }
 
     findItem(data: SearchDataType) {
-
         let res = this.dataArray.find(el => {
             let item = (toJS(el))
             if (compareObjects(item.searchData, data)) {
                 return el.instrumentalData
             }
-
         })
         if (res) {
             this.currentData = res.instrumentalData
+        } else {
+            this.currentData = null
         }
-
     }
 
-
+    addItem(item:ItemType){
+        this.dataArray.push(item)
+    }
 }
+
+
 
 export const Store = new DataStore();
 
