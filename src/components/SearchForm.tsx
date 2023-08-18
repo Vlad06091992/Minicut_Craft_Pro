@@ -22,18 +22,18 @@ export const SearchForm = observer(() => {
                 console.log(searchObject)
             }}>
                 <div>
-                    <span>Диаметр</span> <input type={"number"} value={diameter} onChange={(e) => {
+                    <span>Диаметр</span> <input  value={diameter} onChange={(e) => {
                     setDiametr(+e.currentTarget.value)
                 }}/>
                 </div>
                 <div>
-                    <span>Количество зубьев</span> <input type={"number"} value={numberOfTeeth} onChange={(e) => {
+                    <span>Количество зубьев</span> <input  value={numberOfTeeth} onChange={(e) => {
                     setNumberofTeeth(+e.currentTarget.value)
                 }}/>
                 </div>
                 <div>
 
-                    <span>Спираль</span> <input type={"number"} value={spiral} onChange={(e) => {
+                    <span>Спираль</span> <input  value={spiral} onChange={(e) => {
                     setSpiral(+e.currentTarget.value)
                 }}/>
                 </div>
