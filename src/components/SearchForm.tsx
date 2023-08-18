@@ -4,8 +4,8 @@ import {useState} from "react";
 
 export const SearchForm = observer(() => {
 
-    const [diameter, setDiametr] = useState<number>(0)
-    const [numberOfTeeth, setNumberofTeeth] = useState<number>(0)
+    const [diameter, setDiametr] = useState<number | string>(0)
+    const [numberOfTeeth, setNumberofTeeth] = useState<number | string>(0)
     const [spiral, setSpiral] = useState<number | string>('')
     const [findRes, setFindRes] = useState<any>('')
 
@@ -23,18 +23,18 @@ export const SearchForm = observer(() => {
             }}>
                 <div>
                     <span>Диаметр</span> <input  value={diameter} onChange={(e) => {
-                    setDiametr(+e.currentTarget.value)
+                    setDiametr(e.currentTarget.value)
                 }}/>
                 </div>
                 <div>
                     <span>Количество зубьев</span> <input  value={numberOfTeeth} onChange={(e) => {
-                    setNumberofTeeth(+e.currentTarget.value)
+                    setNumberofTeeth(e.currentTarget.value)
                 }}/>
                 </div>
                 <div>
 
                     <span>Спираль</span> <input  value={spiral} onChange={(e) => {
-                    setSpiral(+e.currentTarget.value)
+                    setSpiral(e.currentTarget.value)
                 }}/>
                 </div>
 

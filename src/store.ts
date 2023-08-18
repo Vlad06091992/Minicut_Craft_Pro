@@ -4,8 +4,8 @@ import {v1} from "uuid";
 import {compareObjects} from "../src/utils/compareObjects";
 
 export type SearchDataType = {
-    diameter: number
-    numberOfTeeth: number
+    diameter: string | number
+    numberOfTeeth: string | number
     spiral: string | number
 }
 
