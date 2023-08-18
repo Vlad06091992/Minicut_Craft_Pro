@@ -7,7 +7,7 @@ import {AddInstrument} from "../src/components/AddInstrument";
 const App = observer(() => {
     return (
         <div className={styles.App}>
-           <h1> Minicut Craft Pro v0.01 </h1>
+           <h1> Minicut Craft Pro v0.02 </h1>
             <SearchForm/>
             {/*<AddInstrument/>*/}
         </div>
