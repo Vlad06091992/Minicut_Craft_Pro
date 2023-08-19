@@ -58,7 +58,7 @@ export const SearchForm = observer(() => {
                 <Button disabled={disabled} color={"warning"} variant={"contained"} style={{margin: '10px'}} onClick={(e) => {
                     let searchObject: SearchDataType = {diameter, numberOfTeeth, spiral}
                     Store.findItem(searchObject)
-                    stateFunctions.forEach((el) => el(''))
+                    // stateFunctions.forEach((el) => el(''))
                 }}>find instrument
                 </Button>
             </div>
