@@ -63,12 +63,13 @@ export const SearchForm = observer(() => {
                 </Button>
             </div>
 
-            <div>
+            {Store.currentData && <div>
                 <div> F : {Store.currentData?.F}</div>
                 <div> R : {Store.currentData?.R}</div>
                 <div> G : {Store.currentData?.G}</div>
+            </div>}
 
-            </div>
+            {!Store.currentData && <div>Инструмент на найден!</div>}
 
         </div>)
 })

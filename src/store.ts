@@ -70,7 +70,6 @@ class DataStore {
     }
 
     showWarning() {
-        debugger
         this.warning = true
         setTimeout(() => {
             this.warning = false
@@ -78,7 +77,6 @@ class DataStore {
     }
 
     showAdded() {
-        debugger
         this.added = true
         setTimeout(() => {
             this.added = false
@@ -100,8 +98,6 @@ class DataStore {
     }
 
     addItem(item: ItemType) {
-
-
         let findIndexItem = this.dataArray.findIndex(el => {
 
             let it = (toJS(el))
@@ -109,17 +105,14 @@ class DataStore {
                 this.showWarning()
                 return el.instrumentalData
             }
-
             this.showAdded()
-
         })
 
-        if (findIndexItem) {
+        if (findIndexItem > 0) {
             this.dataArray.splice(findIndexItem, 1, item)
         } else {
             this.dataArray.push(item)
         }
-
     }
 }
 
