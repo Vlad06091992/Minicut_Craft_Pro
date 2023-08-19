@@ -13,7 +13,7 @@ const App = observer(() => {
 
     return (
         <div className={styles.App}>
-            <h1>Minicut Craft Pro v1.03</h1>
+            <h1>Minicut Craft Pro v1.05</h1>
             <div>
                 Количество конфигураций инструментов : {Store.dataArray.length}
             </div>

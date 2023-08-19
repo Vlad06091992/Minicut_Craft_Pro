@@ -13,7 +13,7 @@ export const SearchForm = observer(() => {
 
     const stateFunctions = [setDiametr, setNumberofTeeth, setSpiral]
 
-    const disabledData =[diameter, numberOfTeeth, spiral]
+    const disabledData = [diameter, numberOfTeeth, spiral]
     const disabled = disabledData.some(el => {
         if (typeof el === 'number') {
             return el < 1
@@ -29,21 +29,38 @@ export const SearchForm = observer(() => {
         Store.currentData = null
     }, [location])
 
+    const clearResIfChangesField = () => {
+        const start = disabledData.every(el => {
+            if (typeof el === 'number') {
+                return el > 1
+            } else {
+                return el.length > 0
+            }
+        })
+
+        if (start && Store.currentData) {
+            stateFunctions.forEach((el) => el(''))
+        }
+        Store.currentData = null
+    }
+
     return (
         <div>
             <h2>Поиск кругов</h2>
-
-
             <div>
                 <div className={s.itemDiv}>
                     <span>Диаметр</span> <input style={{position: "relative", left: '40px'}} value={diameter}
                                                 onChange={(e) => {
                                                     setDiametr(e.currentTarget.value)
+                                                    clearResIfChangesField()
+
                                                 }}/>
                 </div>
                 <div className={s.itemDiv}>
                     <span>Кол-во зубьев</span> <input value={numberOfTeeth} onChange={(e) => {
                     setNumberofTeeth(e.currentTarget.value)
+                    clearResIfChangesField()
+
                 }}/>
                 </div>
                 <div className={s.itemDiv}>
@@ -51,15 +68,17 @@ export const SearchForm = observer(() => {
                     <span>Спираль</span> <input style={{position: "relative", left: '42px'}} value={spiral}
                                                 onChange={(e) => {
                                                     setSpiral(e.currentTarget.value)
+                                                    clearResIfChangesField()
                                                 }}/>
                 </div>
                 {/*<SelectWithOptions setSpiral={setSpiral}/>*/}
 
-                <Button disabled={disabled} color={"warning"} variant={"contained"} style={{margin: '10px'}} onClick={(e) => {
-                    let searchObject: SearchDataType = {diameter, numberOfTeeth, spiral}
-                    Store.findItem(searchObject)
-                    // stateFunctions.forEach((el) => el(''))
-                }}>find instrument
+                <Button disabled={disabled} color={"warning"} variant={"contained"} style={{margin: '10px'}}
+                        onClick={(e) => {
+                            let searchObject: SearchDataType = {diameter, numberOfTeeth, spiral}
+                            Store.findItem(searchObject)
+                            // stateFunctions.forEach((el) => el(''))
+                        }}>find instrument
                 </Button>
             </div>
 
