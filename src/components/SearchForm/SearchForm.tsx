@@ -7,8 +7,8 @@ import {useLocation} from "react-router-dom";
 
 export const SearchForm = observer(() => {
 
-    const [diameter, setDiametr] = useState<number | string>(0)
-    const [numberOfTeeth, setNumberofTeeth] = useState<number | string>(0)
+    const [diameter, setDiametr] = useState<number | string>('')
+    const [numberOfTeeth, setNumberofTeeth] = useState<number | string>('')
     const [spiral, setSpiral] = useState<number | string>('')
 
     const stateFunctions = [setDiametr, setNumberofTeeth, setSpiral]

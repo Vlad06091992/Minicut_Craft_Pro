@@ -46,6 +46,7 @@ class DataStore {
 
     currentData = null as InstrumentalDataType | null;
     warning = false as boolean
+    added = false as boolean
 
     constructor() {
         makeObservable(this, {
@@ -54,6 +55,8 @@ class DataStore {
             currentData: observable,
             warning: observable,
             showWarning: action,
+            added : observable,
+            showAdded: action,
 
         });
         this.getData();
@@ -71,6 +74,14 @@ class DataStore {
         this.warning = true
         setTimeout(() => {
             this.warning = false
+        }, 1500)
+    }
+
+    showAdded() {
+        debugger
+        this.added = true
+        setTimeout(() => {
+            this.added = false
         }, 1500)
     }
 
@@ -98,6 +109,9 @@ class DataStore {
                 this.showWarning()
                 return el.instrumentalData
             }
+
+            this.showAdded()
+
         })
 
         if (findIndexItem) {

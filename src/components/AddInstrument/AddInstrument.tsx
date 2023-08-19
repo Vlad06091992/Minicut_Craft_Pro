@@ -6,8 +6,8 @@ import s from "./AddInstrument.module.css"
 
 export const AddInstrument = observer(() => {
 
-    const [diameter, setDiametr] = useState<number | string>(0)
-    const [numberOfTeeth, setNumberofTeeth] = useState<number | string>(0)
+    const [diameter, setDiametr] = useState<number | string>('')
+    const [numberOfTeeth, setNumberofTeeth] = useState<number | string>('')
     const [spiral, setSpiral] = useState<number | string>('')
     const [F, setF] = useState<number | string>('')
     const [G, setG] = useState<number | string>('')
@@ -74,6 +74,8 @@ export const AddInstrument = observer(() => {
             </Button>
             {Store.warning &&
                 <p style={{margin: '0px', paddingLeft: '10px', color: "red"}}>инструмент был изменен в памяти!</p>}
+            {Store.added && !Store.warning &&
+                <p style={{margin: '0px', paddingLeft: '10px', color: "green"}}>инструмент был добавлен!</p>}
         </div>
     </div>
 })
