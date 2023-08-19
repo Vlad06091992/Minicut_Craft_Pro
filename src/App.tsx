@@ -15,8 +15,8 @@ const App = observer(() => {
                 Количество конфигураций инструментов : {Store.dataArray.length}
             </div>
             <Link to={"search"} ><Button color={"warning"} variant={"contained"} style={{margin:'10px'}}>find</Button></Link>
-            <Link to={"add"} ><Button style={{margin:'10px'}}>add</Button></Link>
-            <Link to={"state"} ><Button style={{margin:'10px'}}>state</Button></Link>
+            <Link to={"add"} ><Button color={"warning"} variant={"contained"} style={{margin:'10px'}}>add</Button></Link>
+            <Link to={"state"} ><Button color={"warning"} variant={"contained"} style={{margin:'10px'}}>state</Button></Link>
             <Outlet/>
         </div>
     );
