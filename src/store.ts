@@ -23,34 +23,37 @@ export type ItemType = {
 class DataStore {
     dataArray: ItemType[] = [
         {
-            searchData: { diameter: 3, numberOfTeeth: 4, spiral: "35.37" },
-            instrumentalData: { F: "F1.5 8'", R: "R1.4(1)8'", G: "G25'" }
+            searchData: {diameter: 3, numberOfTeeth: 4, spiral: "35.37"},
+            instrumentalData: {F: "F1.5 8'", R: "R1.4(1)8'", G: "G25'"}
         },
         {
-            searchData: { diameter: 5, numberOfTeeth: 4, spiral: "35.37" },
-            instrumentalData: { F: "F-T4 8'", R: "R1.5 8'", G: "G25'" }
+            searchData: {diameter: 5, numberOfTeeth: 4, spiral: "35.37"},
+            instrumentalData: {F: "F-T4 8'", R: "R1.5 8'", G: "G25'"}
         },
         {
-            searchData: { diameter: 6, numberOfTeeth: 6, spiral: 45 },
-            instrumentalData: { F: "F-T4 25'", R: "-", G: "G10 45'" }
+            searchData: {diameter: 6, numberOfTeeth: 6, spiral: 45},
+            instrumentalData: {F: "F-T4 25'", R: "-", G: "G10 45'"}
         },
         {
-            searchData: { diameter: 16, numberOfTeeth: 5, spiral: "41.5-42(Волновая)" },
-            instrumentalData: { F: "F-T825'", R: "R-T3 8", G: "G45'" }
+            searchData: {diameter: 16, numberOfTeeth: 5, spiral: "41.5-42(Волновая)"},
+            instrumentalData: {F: "F-T825'", R: "R-T3 8", G: "G45'"}
         },
         {
-            searchData: { diameter: "8", numberOfTeeth: "6", spiral: 45 },
-            instrumentalData: { F: "F-T4 25'", G: "G45'", R: "-" }
+            searchData: {diameter: "8", numberOfTeeth: "6", spiral: 45},
+            instrumentalData: {F: "F-T4 25'", G: "G45'", R: "-"}
         }
     ]
 
     currentData = null as InstrumentalDataType | null;
+    warning = false as boolean
 
     constructor() {
         makeObservable(this, {
             dataArray: observable,
             findItem: action,
-            currentData: observable
+            currentData: observable,
+            warning: observable,
+            showWarning: action,
 
         });
         this.getData();
@@ -61,8 +64,14 @@ class DataStore {
         if (savedValue) {
             this.dataArray = JSON.parse(savedValue);
         }
+    }
 
-
+    showWarning() {
+        debugger
+        this.warning = true
+        setTimeout(() => {
+            this.warning = false
+        }, 1500)
     }
 
     findItem(data: SearchDataType) {
@@ -80,7 +89,23 @@ class DataStore {
     }
 
     addItem(item: ItemType) {
-        this.dataArray.push(item)
+
+
+        let findIndexItem = this.dataArray.findIndex(el => {
+
+            let it = (toJS(el))
+            if (compareObjects(it.searchData, item.searchData)) {
+                this.showWarning()
+                return el.instrumentalData
+            }
+        })
+
+        if (findIndexItem) {
+            this.dataArray.splice(findIndexItem, 1, item)
+        } else {
+            this.dataArray.push(item)
+        }
+
     }
 }
 

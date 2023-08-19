@@ -4,9 +4,9 @@ import App from "./App";
 import {observer} from "mobx-react";
 import {createRoot} from "react-dom/client";
 import {createHashRouter, RouterProvider} from "react-router-dom";
-import {SearchForm} from "../src/components/SearchForm";
-import {AddInstrument} from "../src/components/AddInstrument";
-import GetState from "../src/components/getState";
+import {SearchForm} from "../src/components/SearchForm/SearchForm";
+import {AddInstrument} from "../src/components/AddInstrument/AddInstrument";
+import GetState from "../src/components/GetState/getState";
 import {Store} from "../src/store";
 
 

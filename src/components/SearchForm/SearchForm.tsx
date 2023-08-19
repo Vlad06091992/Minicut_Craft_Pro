@@ -1,8 +1,8 @@
 import {observer} from "mobx-react";
-import {SearchDataType, Store} from '../store'
-import {useState} from "react";
+import {SearchDataType, Store} from '../../../src/store'
+import {useEffect, useState} from "react";
 import {Button} from "@mui/material";
-import {SelectWithOptions} from "../../src/components/InputWithOptions";
+import s from "./SearchForm.module.css"
 
 export const SearchForm = observer(() => {
 
@@ -10,34 +10,38 @@ export const SearchForm = observer(() => {
     const [numberOfTeeth, setNumberofTeeth] = useState<number | string>(0)
     const [spiral, setSpiral] = useState<number | string>('')
 
+    const stateFunctions = [setDiametr,setNumberofTeeth,setSpiral]
+
+
 
     return (
         <div>
-            <h1>Поиск кругов</h1>
+            <h2>Поиск кругов</h2>
 
 
             <div>
-                <div>
-                    <span>Диаметр</span> <input value={diameter} onChange={(e) => {
+                <div className={s.itemDiv}>
+                    <span>Диаметр</span> <input style={{position:"relative",left:'40px'}} value={diameter} onChange={(e) => {
                     setDiametr(e.currentTarget.value)
                 }}/>
                 </div>
-                <div>
-                    <span>Количество зубьев</span> <input value={numberOfTeeth} onChange={(e) => {
+                <div className={s.itemDiv}>
+                    <span>Кол-во зубьев</span> <input value={numberOfTeeth} onChange={(e) => {
                     setNumberofTeeth(e.currentTarget.value)
                 }}/>
                 </div>
-                <div>
+                <div className={s.itemDiv} >
 
-                    <span>Спираль</span> <input value={spiral} onChange={(e) => {
+                    <span>Спираль</span> <input style={{position:"relative",left:'42px'}} value={spiral} onChange={(e) => {
                     setSpiral(e.currentTarget.value)
                 }}/>
                 </div>
                 {/*<SelectWithOptions setSpiral={setSpiral}/>*/}
 
-                <Button variant={'outlined'} onClick={(e) => {
+                <Button color={"warning"} variant={"contained"} style={{margin: '10px'}} onClick={(e) => {
                     let searchObject: SearchDataType = {diameter, numberOfTeeth, spiral}
                     Store.findItem(searchObject)
+                    stateFunctions.forEach((el)=>el(''))
                 }}>find instrument
                 </Button>
             </div>

@@ -1,7 +1,7 @@
 // import "./styles.css";
 import { Highlighter } from "rc-highlight";
 import { observer } from "mobx-react";
-import { Store } from "../store";
+import { Store } from "../../../src/store";
 import {toJS} from "mobx";
 
 const GetState = observer((props: { store: any }) => {

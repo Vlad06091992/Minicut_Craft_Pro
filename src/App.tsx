@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./App.module.scss";
 import {observer} from "mobx-react";
 import {Store} from "../src/store";
@@ -7,6 +7,9 @@ import {Button} from "@mui/material";
 
 const App = observer(() => {
 
+    // useEffect(()=>{
+    //     Store.showWarning()
+    // },[])
 
     return (
         <div className={styles.App}>
