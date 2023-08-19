@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Minicut_Craft_Pro/static/css/main.f2786b3d.css",
-    "main.js": "/Minicut_Craft_Pro/static/js/main.d5c2f69e.js",
+    "main.js": "/Minicut_Craft_Pro/static/js/main.b9bf5cc8.js",
     "index.html": "/Minicut_Craft_Pro/index.html",
     "main.f2786b3d.css.map": "/Minicut_Craft_Pro/static/css/main.f2786b3d.css.map",
-    "main.d5c2f69e.js.map": "/Minicut_Craft_Pro/static/js/main.d5c2f69e.js.map"
+    "main.b9bf5cc8.js.map": "/Minicut_Craft_Pro/static/js/main.b9bf5cc8.js.map"
   },
   "entrypoints": [
     "static/css/main.f2786b3d.css",
-    "static/js/main.d5c2f69e.js"
+    "static/js/main.b9bf5cc8.js"
   ]
 }
