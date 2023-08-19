@@ -1,23 +1,23 @@
 import React from "react";
 import styles from "./App.module.scss";
 import {observer} from "mobx-react";
-import {SearchForm} from "../src/components/SearchForm";
-import {AddInstrument} from "../src/components/AddInstrument";
-import GetState from "../src/components/getState";
 import {Store} from "../src/store";
-import  {SelectWithOptions} from "../src/components/InputWithOptions";
+import {Link, Outlet} from "react-router-dom";
+import {Button} from "@mui/material";
 
 const App = observer(() => {
 
-    const options = ['Apple', 'Banana', 'Cherry', 'Grapes', 'Orange', 'Pineapple'];
 
     return (
         <div className={styles.App}>
-           <h1> Minicut Craft Pro v0.07 </h1>
-            <SearchForm/>
-            <AddInstrument/>
-            <GetState store={Store}/>
-<SelectWithOptions/>
+            <h1>Minicut Craft Pro 0.08</h1>
+            <div>
+                Количество конфигураций инструментов : {Store.dataArray.length}
+            </div>
+            <Link to={"search"} ><Button color={"warning"} variant={"contained"} style={{margin:'10px'}}>find</Button></Link>
+            <Link to={"add"} ><Button style={{margin:'10px'}}>add</Button></Link>
+            <Link to={"state"} ><Button style={{margin:'10px'}}>state</Button></Link>
+            <Outlet/>
         </div>
     );
 });

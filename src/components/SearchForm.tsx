@@ -14,9 +14,7 @@ export const SearchForm = observer(() => {
     return (
         <div>
             <h1>Поиск кругов</h1>
-            <div>
-                Количество конфигураций инструментов : {Store.dataArray.length}
-            </div>
+
 
             <div>
                 <div>
@@ -35,7 +33,7 @@ export const SearchForm = observer(() => {
                     setSpiral(e.currentTarget.value)
                 }}/>
                 </div>
-                <SelectWithOptions setSpiral={setSpiral}/>
+                {/*<SelectWithOptions setSpiral={setSpiral}/>*/}
 
                 <Button variant={'outlined'} onClick={(e) => {
                     let searchObject: SearchDataType = {diameter, numberOfTeeth, spiral}

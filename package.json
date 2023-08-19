@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://vlad06091992.github.io/Minicut_Craft_Pro/",
+  "homepage": "https://vlad06091992.github.io/Minicut_Craft_Pro",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -23,6 +23,7 @@
     "rc-highlight": "^2.5.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "uuid": "^8.0.0",

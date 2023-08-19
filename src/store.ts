@@ -61,6 +61,8 @@ class DataStore {
         if (savedValue) {
             this.dataArray = JSON.parse(savedValue);
         }
+
+
     }
 
     findItem(data: SearchDataType) {
