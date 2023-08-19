@@ -1,6 +1,6 @@
 import {observer} from "mobx-react";
 import {ItemType, SearchDataType, Store} from "../../../src/store";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Button} from "@mui/material";
 import s from "./AddInstrument.module.css"
 
@@ -13,25 +13,38 @@ export const AddInstrument = observer(() => {
     const [G, setG] = useState<number | string>('')
     const [R, setR] = useState<number | string>('')
 
-    const stateFunctions = [setDiametr,setSpiral,setNumberofTeeth,setF,setR,setG]
+    const disabledData =[diameter, numberOfTeeth, spiral, F, G, R]
+    const disabled = disabledData.some(el => {
+        if (typeof el === 'number') {
+            return el < 1
+        } else {
+            return el.length == 0
+        }
+    })
+
+
+    const stateFunctions = [setDiametr, setSpiral, setNumberofTeeth, setF, setR, setG]
 
     return <div>
         <h2>Добавление кругов</h2>
         <div>
             <div className={s.itemDiv}>
-                <span>Диаметр</span> <input style={{position:"relative",left:'40px'}} value={diameter} onChange={(e) => {
-                setDiametr(e.currentTarget.value)
-            }}/>
+                <span>Диаметр</span> <input style={{position: "relative", left: '40px'}} value={diameter}
+                                            onChange={(e) => {
+                                                setDiametr(e.currentTarget.value)
+                                            }}/>
             </div>
             <div className={s.itemDiv}>
-                <span>Кол-во зубьев</span> <input style={{position:"relative"}} value={numberOfTeeth} onChange={(e) => {
-                setNumberofTeeth(e.currentTarget.value)
-            }}/>
+                <span>Кол-во зубьев</span> <input style={{position: "relative"}} value={numberOfTeeth}
+                                                  onChange={(e) => {
+                                                      setNumberofTeeth(e.currentTarget.value)
+                                                  }}/>
             </div>
             <div className={s.itemDiv}>
-                <span>Спираль</span> <input style={{position:"relative",left:'42px'}} value={spiral} onChange={(e) => {
-                setSpiral(e.currentTarget.value)
-            }}/>
+                <span>Спираль</span> <input style={{position: "relative", left: '42px'}} value={spiral}
+                                            onChange={(e) => {
+                                                setSpiral(e.currentTarget.value)
+                                            }}/>
             </div>
             <div className={s.itemDiv}>
                 <span>F</span> <input value={F} onChange={(e) => {
@@ -50,15 +63,17 @@ export const AddInstrument = observer(() => {
             </div>
 
 
-            <Button color={"warning"} variant={"contained"} style={{margin:'10px'}} onClick={(e) => {
+            <Button color={"warning"} disabled={disabled} variant={"contained"} style={{margin: '10px'}} onClick={(e) => {
                 let searchObject: ItemType = {
-                    searchData: {diameter, numberOfTeeth, spiral}, instrumentalData: {F, G, R}}
-                    Store.addItem(searchObject)
-                stateFunctions.forEach((el)=>el(''))
+                    searchData: {diameter, numberOfTeeth, spiral}, instrumentalData: {F, G, R}
                 }
+                Store.addItem(searchObject)
+                stateFunctions.forEach((el) => el(''))
+            }
             }>Add or change instrument
-                </Button>
-            { Store.warning && <p style={{margin:'0px',paddingLeft:'10px', color:"red"}}>инструмент был изменен в памяти!</p>}
-                </div>
-                </div>
-            })
+            </Button>
+            {Store.warning &&
+                <p style={{margin: '0px', paddingLeft: '10px', color: "red"}}>инструмент был изменен в памяти!</p>}
+        </div>
+    </div>
+})
