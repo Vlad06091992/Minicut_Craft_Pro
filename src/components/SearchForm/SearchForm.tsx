@@ -68,7 +68,6 @@ export const SearchForm = observer(() => {
                 <div> R : {Store.currentData?.R}</div>
                 <div> G : {Store.currentData?.G}</div>
 
-
             </div>
 
         </div>)
