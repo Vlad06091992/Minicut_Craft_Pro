@@ -31,19 +31,19 @@ export const AddInstrument = observer(() => {
             <div className={s.itemDiv}>
                 <span>Диаметр</span> <input style={{position: "relative", left: '40px'}} value={diameter}
                                             onChange={(e) => {
-                                                setDiametr(e.currentTarget.value)
+                                                setDiametr(e.currentTarget.value.trim())
                                             }}/>
             </div>
             <div className={s.itemDiv}>
                 <span>Кол-во зубьев</span> <input style={{position: "relative"}} value={numberOfTeeth}
                                                   onChange={(e) => {
-                                                      setNumberofTeeth(e.currentTarget.value)
+                                                      setNumberofTeeth(e.currentTarget.value.trim())
                                                   }}/>
             </div>
             <div className={s.itemDiv}>
                 <span>Спираль</span> <input style={{position: "relative", left: '42px'}} value={spiral}
                                             onChange={(e) => {
-                                                setSpiral(e.currentTarget.value)
+                                                setSpiral(e.currentTarget.value.trim())
                                             }}/>
             </div>
             <div className={s.itemDiv}>
