@@ -51,14 +51,14 @@ export const SearchForm = observer(() => {
                 <div className={s.itemDiv}>
                     <span>Диаметр</span> <input style={{position: "relative", left: '40px'}} value={diameter}
                                                 onChange={(e) => {
-                                                    setDiametr(e.currentTarget.value)
+                                                    setDiametr(e.currentTarget.value.trim())
                                                     clearResIfChangesField()
 
                                                 }}/>
                 </div>
                 <div className={s.itemDiv}>
                     <span>Кол-во зубьев</span> <input value={numberOfTeeth} onChange={(e) => {
-                    setNumberofTeeth(e.currentTarget.value)
+                    setNumberofTeeth(e.currentTarget.value.trim())
                     clearResIfChangesField()
 
                 }}/>
@@ -67,7 +67,7 @@ export const SearchForm = observer(() => {
 
                     <span>Спираль</span> <input style={{position: "relative", left: '42px'}} value={spiral}
                                                 onChange={(e) => {
-                                                    setSpiral(e.currentTarget.value)
+                                                    setSpiral(e.currentTarget.valu.trim())
                                                     clearResIfChangesField()
                                                 }}/>
                 </div>
