@@ -67,7 +67,7 @@ export const SearchForm = observer(() => {
 
                     <span>Спираль</span> <input style={{position: "relative", left: '42px'}} value={spiral}
                                                 onChange={(e) => {
-                                                    setSpiral(e.currentTarget.valu.trim())
+                                                    setSpiral(e.currentTarget.value.trim())
                                                     clearResIfChangesField()
                                                 }}/>
                 </div>
