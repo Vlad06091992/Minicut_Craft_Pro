@@ -6,11 +6,6 @@ import {Link, Outlet} from "react-router-dom";
 import {Button} from "@mui/material";
 
 const App = observer(() => {
-
-    // useEffect(()=>{
-    //     Store.showWarning()
-    // },[])
-
     return (
         <div className={styles.App}>
             <h1>Minicut Craft Pro v1.05</h1>

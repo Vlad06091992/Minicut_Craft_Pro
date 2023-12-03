@@ -1,4 +1,4 @@
-import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import {observer} from "mobx-react";
 import {Store} from "../../src/store";
 
@@ -19,16 +19,10 @@ export const SelectWithOptions = observer((props:Props) => {
                     id="demo-simple-select"
                     value={'spiral'}
                     label='spiral'
-                    onChange={(e:any) => {
-                        // if(e.target?.value) {
-                        // console.log()
-                        // }
+                    onChange={(e:SelectChangeEvent<"spiral">) => {
                         props.setSpiral(e.target?.value)
-
                     }}
                 >
-
-
                     {options.map(option => {
                         return (
                             <MenuItem key={option} value={option}>

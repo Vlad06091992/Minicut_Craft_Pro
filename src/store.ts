@@ -107,7 +107,6 @@ class DataStore {
     }
 
     getData() {
-        debugger
         let savedValue = localStorage.getItem("someValue");
         if (savedValue) {
             this.dataArray = JSON.parse(savedValue);
